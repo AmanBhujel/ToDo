@@ -697,7 +697,7 @@
 
     .todos-body {
         display: flex;
-        flex-direction: column;
+     
         margin-top: 0rem;
     }
 
@@ -751,8 +751,6 @@
     }
 
     .toDos {
-       
-    
         width: 40%;
         margin-left: 3rem;
         height: 30rem;
