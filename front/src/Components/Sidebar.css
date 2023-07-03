@@ -1,0 +1,72 @@
+.Sidebar {
+  width: 20%;
+  height: 100vh;
+  position: absolute;
+  background-color: #454545;
+  z-index: 1;
+}
+
+.sidebar-head {
+  display: flex;
+}
+.icon-cancel{
+  font-size: 3rem;
+  margin: 10px 0 0 10px;
+  color: rgb(119, 120, 120);
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  display: none!important;
+}
+
+
+.Sidebar p {
+  font-size: 1.3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(255, 255, 255);
+  margin: 60px 0 0 20px;
+  font-weight: bold;
+}
+
+.calendar {
+  width: 15%;
+  margin: 40px 0px 0px 20px;
+  color: aliceblue;
+}
+
+.css-1hbyad5-MuiTypography-root {
+  color: aliceblue;
+  display: none;
+}
+
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
+  background-color: #454545;
+  color: aliceblue;
+
+}
+
+.css-nk89i7-MuiPickersCalendarHeader-root {
+  background-color: #454545;
+  color: aliceblue;
+
+
+}
+
+.css-cwhad8-MuiDateCalendar-root {
+  background-color: #454545;
+  color: aliceblue;
+
+}
+
+.css-hlj6pa-MuiDialogActions-root {
+  background-color: #454545;
+
+}
+.select-btn{
+  font-size: 1.2rem;
+  background-color: #c3bebe;
+  color: aliceblue;
+  width: 7rem;
+  border-radius: 20px;
+  border:none;
+  margin: 20px 0 0 80px;
+}
