@@ -5,9 +5,7 @@ import { BsPlusSquareFill } from "react-icons/bs";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom'
 import { Context } from '../App';
-import Sidebar from './sidebar';
 
 import { TiEdit } from "react-icons/ti";
 import './ToDo.css'
@@ -43,7 +41,6 @@ export default function ToDo() {
             .then(res => res.json())
             .then(data => {
                 setCompleted(data);
-                console.log("selected date for now",selectedDate)
             })
             .catch(err => {
                 console.log(err);
@@ -59,22 +56,15 @@ export default function ToDo() {
             });
     }
     useEffect(() => {
-        //fetching data from database
-
-
         fetchTodos();
-    }, [formattedDate]); // Empty dependency array ensures the effect runs only once on mount
+    }, [formattedDate]);
 
     const PostTodo = () => {
-        const date = new Date(); // Get the current date
-
+        const date = new Date();
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         const formattedDate = date.toLocaleDateString('en-US', options).replace(/\//g, '-');
 
-        console.log("postedat", formattedDate); // Output: "07-01-2023"
 
-
-        //sending data as a post
         if (description) {
             fetch("/postTodo", {
                 method: "post",
@@ -86,23 +76,28 @@ export default function ToDo() {
                     status: "pending",
                     createdAt: formattedDate
                 })
-            }).then(res => res.json())
+            })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
                 .then(savedTodo => {
                     const toPost = savedTodo.postedTodo;
-                    setTodos([...todos, toPost]); // Add the new todo to the existing todos array       
-                    setValue1('')
-                    notifyB(savedTodo.message)
+                    setTodos([...todos, toPost]);
+                    setValue1('');
+                    notifyB(savedTodo.message);
                 })
-
                 .catch(error => {
-                    console.error("Error while deleting:", error);
-                    notifyA(error);
+                    console.error("Error while posting:", error);
+                    notifyA(error.message);
                 });
-        }
-        else {
-            notifyA("Text field is empty.")
+        } else {
+            notifyA("Text field is empty.");
         }
     }
+
 
     const deleteTodo = (_id) => {
         //deleting todo
@@ -118,7 +113,6 @@ export default function ToDo() {
             .then(response => response.json())
             .then(data => {
                 notifyA(data.message);
-                // Re-fetch the todos after deletion
                 fetchTodos();
             })
 
@@ -219,145 +213,130 @@ export default function ToDo() {
 
     return (
         <>
-
-
-            <div className='todo-bg'>
-                <div className='todos-head'>
-                    <div className='history-btn'>
-                        <button onClick={toggleSidebar}>
-
-                            History
-
-
-                        </button>
-                    </div>
-                    <div className='logo-container'>
-                        <div className='todo-logo'>
-                            <p>TODO LISTS</p>
-                        </div>
-                        <div className='container'>
-                            <p className='text1'>Overthinking?Write </p>
-                            <span className='typing-animation'> Todo lists. </span>
-                        </div>
-
-                    </div>
+          <div className='todo-bg'>
+            <div className='todos-head'>
+              <div className='history-btn'>
+                <button onClick={toggleSidebar}>
+                  History
+                </button>
+              </div>
+              <div className='logo-container'>
+                <div className='todo-logo'>
+                  <p>TODO LISTS</p>
                 </div>
-                <div className='todos-date'>
-                    <p>{dayWithOrdinal}</p>
+                <div className='container'>
+                  <p className='text1'>Overthinking? Write </p>
+                  <span className='typing-animation'> Todolists. </span>
                 </div>
-
-                <div className='todos-body'>
-                    <div className='todos-completed'>
-                        <div className='heading'>
-                            <h1>Completed Tasks</h1>
-                            <div className='search-btn'>
-                                <input
-                                    type='text'
-                                    value={value}
-                                    id='completed'
-                                    placeholder='Search your Tasks'
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter') {
-                                            // Add your desired functionality here
-                                        }
-                                    }}
-                                />
-                                <button className='btn'>
-                                    <FaSearch />
-                                </button>
-                            </div>
-                        </div>
-                        <div className='body'>
-                            <ul>
-                                {completed.map((todo) => (
-                                    <div className='flex-btn' key={todo._id}>
-                                        {editOn && editedTodoId === todo._id ? (
-                                            <input
-                                                type="text"
-                                                value={editDescription}
-                                                className='edit-description'
-                                                onChange={(e) => setEditDescription(e.target.value)}
-                                                onKeyDown={(e) => {
-                                                    if (e.key === 'Enter') {
-                                                        PostTodo();
-                                                    }
-                                                }}
-                                            />
-                                        ) : (
-                                            <li>
-                                                {todo.description}
-                                            </li>
-                                        )}
-                                        <button className='deleteBtn' onClick={() => deleteTodo(todo._id)}><AiOutlineDelete /></button>
-                                        <button className='checkBtn' onClick={() => Uncheckbox(todo._id)}><ImCheckboxChecked /></button>
-                                        <button className='editBtn' onClick={() => {
-                                            editTodo(todo._id)
-                                            completedEdit(todo._id)
-                                        }}><TiEdit /></button>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                    <div className='toDos'>
-                        <div className='heading'>
-                            <h1>ToDos Tasks</h1>
-                            <div className='search-btn'>
-                                <input
-                                    type='text'
-                                    value={description}
-                                    id='completed'
-                                    placeholder='Search your Tasks'
-                                    onChange={valueTransfer}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter') {
-                                            PostTodo();
-                                        }
-                                    }}
-                                />
-                                <button className='btn' onClick={PostTodo}>
-                                    <BsPlusSquareFill />
-                                </button>
-                            </div>
-                        </div>
-                        <div className='body'>
-                            <ul>
-                                {todos.map((todo) => (
-                                    <div className='flex-btn' key={todo._id}>
-                                        {editOn && editedTodoId === todo._id ? (
-                                            <input
-                                                type="text"
-                                                value={editDescription}
-                                                className='edit-description'
-                                                onChange={(e) => setEditDescription(e.target.value)}
-                                                onKeyDown={(e) => {
-                                                    if (e.key === 'Enter') {
-                                                        editTodo(todo._id);
-                                                        checkingEdit(todo._id)
-
-                                                    }
-                                                }}
-                                            />
-                                        ) : (
-                                            <li>
-                                                {todo.description}
-                                            </li>
-                                        )}
-                                        <button className='deleteBtn' onClick={() => deleteTodo(todo._id)}><AiOutlineDelete /></button>
-                                        <button className='checkBtn' onClick={() => Checkbox(todo._id)}><ImCheckboxUnchecked /></button>
-                                        <button className='editBtn' onClick={() => {
-                                            editTodo(todo._id)
-                                            checkingEdit(todo._id)
-                                        }}><TiEdit /></button>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div className='todos-date'>
+              <p>{dayWithOrdinal}</p>
+            </div>
+      
+            <div className='todos-body'>
+              <div className='todos-completed'>
+                <div className='heading'>
+                  <h1>Completed Tasks</h1>
+                  {/* Search input can be added here */}
+                </div>
+                <div className='body'>
+                  {completed.length === 0 ? (
+                    <p  style={{width:'100%',height:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>No completed tasks to display.</p>
+                  ) : (
+                    <ul>
+                      {completed.map((todo) => (
+                        <div className='flex-btn' key={todo._id}>
+                          {editOn && editedTodoId === todo._id ? (
+                            <input
+                              type="text"
+                              value={editDescription}
+                              className='edit-description'
+                              onChange={(e) => setEditDescription(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                  PostTodo();
+                                }
+                              }}
+                            />
+                          ) : (
+                            <li>
+                              {todo.description}
+                            </li>
+                          )}
+                          <button className='deleteBtn' onClick={() => deleteTodo(todo._id)}><AiOutlineDelete /></button>
+                          <button className='checkBtn' onClick={() => Uncheckbox(todo._id)}><ImCheckboxChecked /></button>
+                          <button className='editBtn' onClick={() => {
+                            editTodo(todo._id)
+                            completedEdit(todo._id)
+                          }}><TiEdit /></button>
+                        </div>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+              <div className='toDos'>
+                <div className='heading'>
+                  <h1>ToDos Tasks</h1>
+                  <div className='search-btn'>
+                    <input
+                      type='text'
+                      value={description}
+                      id='completed'
+                      placeholder='Add your Task'
+                      onChange={valueTransfer}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          PostTodo();
+                        }
+                      }}
+                    />
+                    <button className='btn' onClick={PostTodo}>
+                      <BsPlusSquareFill />
+                    </button>
+                  </div>
+                </div>
+                <div className='body'>
+                  {todos.length === 0 ? (
+                    <p style={{width:'100%',height:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>No todos to display.</p>
+                  ) : (
+                    <ul>
+                      {todos.map((todo) => (
+                        <div className='flex-btn' key={todo._id}>
+                          {editOn && editedTodoId === todo._id ? (
+                            <input
+                              type="text"
+                              value={editDescription}
+                              className='edit-description'
+                              onChange={(e) => setEditDescription(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                  editTodo(todo._id);
+                                  checkingEdit(todo._id)
+                                }
+                              }}
+                            />
+                          ) : (
+                            <li>
+                              {todo.description}
+                            </li>
+                          )}
+                          <button className='deleteBtn' onClick={() => deleteTodo(todo._id)}><AiOutlineDelete /></button>
+                          <button className='checkBtn' onClick={() => Checkbox(todo._id)}><ImCheckboxUnchecked /></button>
+                          <button className='editBtn' onClick={() => {
+                            editTodo(todo._id)
+                            checkingEdit(todo._id)
+                          }}><TiEdit /></button>
+                        </div>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </>
-    );
-
-
+      );
+      
 }

@@ -45,7 +45,7 @@
     display: flex;
     text-align: center;
     justify-content: center;
-  
+
     font-size: 5rem;
     font-weight: bolder;
     color: red;
@@ -82,28 +82,27 @@
 }
 
 .typing-animation {
-   
-    width: 11rem;
-    margin-left: 0.8rem;
+    width: 100%;
+    margin-left: 0.4rem;
     display: flex;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: aliceblue;
-    letter-spacing: 5.8px;
+    letter-spacing: 5px;
     font-family: monospace;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3.5px solid rgb(255, 255, 255);
+    border-right: 1px solid transparent;
+    animation: typing 7s steps(10, end) infinite alternate, blink .75s step-end infinite;
 
-    animation: typing 7s steps(11, end) infinite alternate, blink .75s step-end infinite;
 }
 
 @keyframes typing {
     from {
-        width: 1rem
+        width: 0;
     }
 
     to {
-        width: 10rem
+        width: 100%;
     }
 }
 
@@ -119,7 +118,6 @@
     }
 }
 
-
 .todos-body {
     height: 75%;
     color: aliceblue;
@@ -133,7 +131,7 @@
     background-color: #1F1F1F;
     height: 70%;
     box-shadow: 0 0 50px 10px #ff9f9f4d;
- 
+
     display: flex;
     flex-direction: column;
 }
@@ -168,7 +166,7 @@
     background-color: transparent;
     border: none;
     transition: all 2s ease;
-   
+
 }
 
 .btn:hover {
@@ -219,11 +217,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
     border: 2px solid transparent;
     animation: borderAnimation 4s linear infinite;
     position: relative;
-  
+
     border-radius: 5px;
     transition: all 0.6s linear;
     flex-wrap: wrap;
@@ -370,6 +368,7 @@
         width: 100%;
 
     }
+
     .heading h1 {
         font-size: 2rem;
     }
@@ -491,7 +490,7 @@
         font-size: 1rem;
         /* Adjust font size */
         height: 3rem;
-        overflow:auto ;
+        overflow: auto;
     }
 
     .body ul li:hover {
@@ -534,6 +533,7 @@
         margin-bottom: 30px;
         box-shadow: 0 0 40px 5px #ff9f9f4d;
     }
+
     .heading h1 {
         font-size: 1rem;
     }
@@ -546,7 +546,7 @@
 /* 851-1200 */
 @keyframes typing3 {
     from {
-        width: 1rem
+        width: 0
     }
 
     to {
@@ -567,6 +567,7 @@
         margin: 30px 0 0 10%;
         font-size: 1.3rem;
     }
+
     .heading h1 {
         font-size: 2rem;
     }
@@ -593,7 +594,7 @@
         margin-top: 0.7rem;
         width: 9rem;
         letter-spacing: 3px;
-        animation: typing3 6s steps(10, end) infinite alternate, blink 0.5s step-end infinite;
+        animation: typing3 6s steps(9, end) infinite alternate, blink 0.5s step-end infinite;
     }
 
     .todos-date {
@@ -672,6 +673,7 @@
         width: auto;
     }
 }
+
 /* 851-1200 */
 
 @media (min-width: 1401px) and (max-width: 1800px) {
@@ -687,7 +689,7 @@
         margin-top: 0.7rem;
         width: 9rem;
         letter-spacing: 3px;
-        animation: typing3 6s steps(10, end) infinite alternate, blink 0.5s step-end infinite;
+        animation: typing3 6s steps(9, end) infinite alternate, blink 0.5s step-end infinite;
     }
 
     .todos-date {
@@ -697,7 +699,7 @@
 
     .todos-body {
         display: flex;
-     
+
         margin-top: 0rem;
     }
 
@@ -715,7 +717,7 @@
 
     .body ul li {
         width: 95%;
-     
+
         font-size: 1rem;
         height: 3rem;
     }
@@ -757,6 +759,7 @@
         margin-top: 2rem;
         box-shadow: 0 0 40px 5px #ff9f9f4d;
     }
+
     .Sidebar {
         width: auto;
     }

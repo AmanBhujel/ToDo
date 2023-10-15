@@ -13,7 +13,6 @@ router.get('/getchecked', (req, res) => {
     })
         .then(todos => {
             res.json(todos)
-
         }
         )
         .catch(err => console.log(err))
@@ -43,7 +42,6 @@ router.get('/getFromDates', (req, res) => {
     })
         .then(filtered => {
             if (filtered) {
-                console.log(date)
                 res.json(filtered);
             }
             else { console.log("No Todos") }

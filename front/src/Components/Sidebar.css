@@ -1,7 +1,7 @@
 .Sidebar {
   width: 20%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background-color: #454545;
   z-index: 1;
 }
