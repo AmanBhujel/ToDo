@@ -1,0 +1,766 @@
+* {
+    margin: 0;
+}
+
+.todo-bg {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #1B1B1B;
+    overflow-y: hidden;
+}
+
+.todos-head {
+    display: flex;
+    height: 25%;
+}
+
+.history-btn button {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    margin: 3rem;
+    width: 9rem;
+    height: 3.5rem;
+    background-color: #060606;
+    color: aliceblue;
+    font-size: 2rem;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 5px #ffffff4d;
+
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-logo {
+    margin-left: -8rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    font-size: 5rem;
+    font-weight: bolder;
+    color: red;
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    margin-left: -8rem;
+
+    justify-content: center;
+
+
+}
+
+.text1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: aliceblue;
+    letter-spacing: 6px;
+    font-family: monospace;
+
+}
+
+.todos-date {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 30px 0 20px 0;
+    font-size: 1.6rem;
+    color: aliceblue;
+}
+
+.typing-animation {
+    width: 100%;
+    margin-left: 0.4rem;
+    display: flex;
+    font-size: 0.8rem;
+    color: aliceblue;
+    letter-spacing: 5px;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid transparent;
+    animation: typing 7s steps(10, end) infinite alternate, blink .75s step-end infinite;
+
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: rgb(255, 255, 255);
+    }
+}
+
+.todos-body {
+    height: 75%;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.todos-completed {
+    margin-top: 4rem;
+    width: 30%;
+    background-color: #1F1F1F;
+    height: 70%;
+    box-shadow: 0 0 50px 10px #ff9f9f4d;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.heading h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.search-btn input {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.7rem;
+    height: 2rem;
+    width: 80%;
+    background-color: #483636;
+    color: aliceblue;
+    border: none;
+}
+
+.btn {
+    color: aqua;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    background-color: transparent;
+    border: none;
+    transition: all 2s ease;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.body {
+    display: flex;
+    margin-top: 1rem;
+    height: 72%;
+    overflow: auto;
+    scrollbar-color: aqua transparent;
+}
+
+.flex-btn {
+    display: flex;
+    width: 100%;
+
+}
+
+.body ul {
+
+    padding-inline-start: 0;
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-color: transparent;
+    }
+
+    75% {
+        border-color: aqua;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+.body ul li {
+    list-style: none;
+    width: 25rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    background-color: #483636;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid transparent;
+    animation: borderAnimation 4s linear infinite;
+    position: relative;
+
+    border-radius: 5px;
+    transition: all 0.6s linear;
+    flex-wrap: wrap;
+}
+
+.body ul li:hover {
+    background-color: rgb(62, 200, 200);
+    width: 26rem;
+    height: 3.3rem;
+    margin: 0.5rem;
+    color: #060606;
+
+}
+
+.deleteBtn {
+    font-size: 2rem;
+    background-color: transparent;
+    margin-top: 1.5rem;
+    border: none;
+    color: rgb(56, 186, 186);
+}
+
+.checkBtn {
+    font-size: 1.6rem;
+    background-color: transparent;
+    margin-top: 1.5rem;
+    border: none;
+    color: rgb(56, 186, 186);
+}
+
+.toDos {
+    margin-top: 4rem;
+    box-shadow: 0 0 50px 10px #ff9f9f4d;
+    width: 30%;
+    background-color: #1F1F1F;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editBtn {
+    font-size: 2rem;
+    background-color: transparent;
+    margin-top: 1.5rem;
+    border: none;
+    color: rgb(56, 186, 186);
+}
+
+.edit-description {
+    width: 25rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    background-color: #483636;
+    text-align: center;
+    border: 2px solid transparent;
+    animation: borderAnimation 4s linear infinite;
+    position: relative;
+    color: aliceblue;
+    border-radius: 5px;
+    transition: all 0.6s linear;
+
+}
+
+@keyframes typing1 {
+    from {
+        width: 1rem
+    }
+
+    to {
+        width: 8rem
+    }
+}
+
+@media (min-width: 500px) and (max-width: 850px) {
+    .todo-bg {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+    }
+
+    .history-btn button {
+        width: 6rem;
+        height: 2rem;
+        margin: 30px 0 0 10%;
+        font-size: 1rem;
+    }
+
+    .search-btn input {
+        width: 75%;
+    }
+
+    .todo-logo {
+        margin-top: 4rem;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .text1 {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        margin-top: 0.7rem;
+    }
+
+    .typing-animation {
+        font-size: 0.8rem;
+        margin-top: 0.7rem;
+        width: 7rem;
+        letter-spacing: 3px;
+        animation: typing1 6s steps(8, end) infinite alternate, blink 0.5s step-end infinite;
+    }
+
+    .todos-date {
+        font-size: 1rem;
+        margin-top: 0.7rem;
+    }
+
+    .todos-body {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0rem;
+    }
+
+    .todos-completed {
+        width: 80%;
+        margin-left: 10%;
+        height: 30rem;
+        margin-top: 2rem;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .body ul {
+        width: 100%;
+    }
+
+    .body ul li {
+        width: 95%;
+        font-size: 1rem;
+        height: 3rem;
+    }
+
+    .body ul li:hover {
+        width: 100%;
+
+    }
+
+    .heading h1 {
+        font-size: 2rem;
+    }
+
+    .edit-description {
+        width: 100%;
+        font-size: 1rem;
+        height: 3rem;
+    }
+
+    .deleteBtn,
+    .checkBtn,
+    .editBtn {
+        font-size: 1.5rem;
+    }
+
+
+    .deleteBtn:hover {
+        font-size: 2rem;
+    }
+
+    .editBtn:hover {
+        font-size: 2rem;
+    }
+
+    .checkBtn:hover {
+        font-size: 2rem;
+    }
+
+    .toDos {
+        width: 80%;
+        height: 30rem;
+        margin-left: 10%;
+        margin-bottom: 30px;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .Sidebar {
+        width: auto;
+    }
+}
+
+/* For 300-500 */
+
+@keyframes typing2 {
+    from {
+        width: 1rem
+    }
+
+    to {
+        width: 6rem
+    }
+}
+
+@media (min-width: 100px) and (max-width: 500px) {
+    .todo-bg {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+    }
+
+    .history-btn button {
+        width: 6rem;
+        height: 2rem;
+        margin: 30px 0 0 10%;
+        font-size: 1rem;
+    }
+
+    .search-btn input {
+        width: 70%;
+    }
+
+    .todo-logo {
+        margin-top: 4rem;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .text1 {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        margin-top: 0.7rem;
+    }
+
+    .typing-animation {
+        font-size: 0.8rem;
+        margin-top: 0.7rem;
+        width: 7rem;
+        letter-spacing: 3px;
+        animation: typing1 6s steps(8, end) infinite alternate, blink 0.5s step-end infinite;
+    }
+
+    .todos-date {
+        font-size: 1rem;
+        margin-top: 0.7rem;
+    }
+
+    .todos-body {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0rem;
+    }
+
+    .todos-completed {
+        width: 80%;
+        margin-left: 10%;
+        height: 30rem;
+        margin-top: 2rem;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .body ul {
+        width: 100%;
+    }
+
+    .body ul li {
+        width: 95%;
+        /* Take 100% of the space on mobile */
+        font-size: 1rem;
+        /* Adjust font size */
+        height: 3rem;
+        overflow: auto;
+    }
+
+    .body ul li:hover {
+        width: 100%;
+
+    }
+
+    .edit-description {
+        width: 100%;
+        /* Take 100% of the space on mobile */
+        font-size: 1rem;
+        /* Adjust font size */
+        height: 3rem;
+    }
+
+    .deleteBtn,
+    .checkBtn,
+    .editBtn {
+        font-size: 1.5rem;
+        /* Adjust font size */
+    }
+
+
+    .deleteBtn:hover {
+        font-size: 2rem;
+    }
+
+    .editBtn:hover {
+        font-size: 2rem;
+    }
+
+    .checkBtn:hover {
+        font-size: 2rem;
+    }
+
+    .toDos {
+        width: 80%;
+        height: 30rem;
+        margin-left: 10%;
+        margin-bottom: 30px;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .heading h1 {
+        font-size: 1rem;
+    }
+
+    .Sidebar {
+        width: auto;
+    }
+}
+
+/* 851-1200 */
+@keyframes typing3 {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 9rem
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1400px) {
+    .todo-bg {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+    }
+
+    .history-btn button {
+        width: 8rem;
+        height: 2rem;
+        margin: 30px 0 0 10%;
+        font-size: 1.3rem;
+    }
+
+    .heading h1 {
+        font-size: 2rem;
+    }
+
+    .search-btn input {
+        width: 90%;
+    }
+
+    .todo-logo {
+        margin-top: 4rem;
+        font-size: 3rem;
+        text-align: center;
+        /* Center horizontally */
+    }
+
+    .text1 {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin-top: 0.7rem;
+    }
+
+    .typing-animation {
+        font-size: 1rem;
+        margin-top: 0.7rem;
+        width: 9rem;
+        letter-spacing: 3px;
+        animation: typing3 6s steps(9, end) infinite alternate, blink 0.5s step-end infinite;
+    }
+
+    .todos-date {
+        font-size: 1rem;
+        margin-top: 0.7rem;
+    }
+
+    .todos-body {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0rem;
+    }
+
+    .todos-completed {
+        width: 80%;
+        margin-left: 10%;
+        height: 30rem;
+        margin-top: 2rem;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .body ul {
+        width: 100%;
+    }
+
+    .body ul li {
+        width: 95%;
+        /* Take 100% of the space on mobile */
+        font-size: 1rem;
+        /* Adjust font size */
+        height: 3rem;
+    }
+
+    .body ul li:hover {
+        width: 100%;
+
+    }
+
+    .edit-description {
+        width: 100%;
+        /* Take 100% of the space on mobile */
+        font-size: 1rem;
+        /* Adjust font size */
+        height: 3rem;
+    }
+
+    .deleteBtn,
+    .checkBtn,
+    .editBtn {
+        font-size: 2rem;
+        /* Adjust font size */
+    }
+
+
+    .deleteBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .editBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .checkBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .toDos {
+        width: 80%;
+        height: 30rem;
+        margin-left: 10%;
+        margin-bottom: 30px;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .Sidebar {
+        width: auto;
+    }
+}
+
+/* 851-1200 */
+
+@media (min-width: 1401px) and (max-width: 1800px) {
+
+    .text1 {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin-top: 0.7rem;
+    }
+
+    .typing-animation {
+        font-size: 1rem;
+        margin-top: 0.7rem;
+        width: 9rem;
+        letter-spacing: 3px;
+        animation: typing3 6s steps(9, end) infinite alternate, blink 0.5s step-end infinite;
+    }
+
+    .todos-date {
+        font-size: 1.5rem;
+        margin-top: 0.7rem;
+    }
+
+    .todos-body {
+        display: flex;
+
+        margin-top: 0rem;
+    }
+
+    .todos-completed {
+        width: 40%;
+        margin-left: 2%;
+        height: 30rem;
+        margin-top: 2rem;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .body ul {
+        width: 100%;
+    }
+
+    .body ul li {
+        width: 95%;
+
+        font-size: 1rem;
+        height: 3rem;
+    }
+
+    .body ul li:hover {
+        width: 100%;
+
+    }
+
+    .edit-description {
+        width: 100%;
+        font-size: 1rem;
+        height: 3rem;
+    }
+
+    .deleteBtn,
+    .checkBtn,
+    .editBtn {
+        font-size: 2rem;
+    }
+
+
+    .deleteBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .editBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .checkBtn:hover {
+        font-size: 2.5rem;
+    }
+
+    .toDos {
+        width: 40%;
+        margin-left: 3rem;
+        height: 30rem;
+        margin-top: 2rem;
+        box-shadow: 0 0 40px 5px #ff9f9f4d;
+    }
+
+    .Sidebar {
+        width: auto;
+    }
+}
