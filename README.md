@@ -33,3 +33,15 @@ The Todo App is a user-friendly web application developed with React. It empower
 - Material-UI Component Library
 
 This project leverages these technologies to create a seamless and visually appealing Todo application, enhancing the user experience with a range of features and elegant design elements.
+
+
+
+## Project Photos:
+
+![TODO](https://github.com/AmanBhujel/Todo/assets/132144406/b30b8dd5-b7d7-48cb-b224-a40d3ccb997d)
+
+
+![Todo](https://github.com/AmanBhujel/Todo/assets/132144406/46b58306-da64-4d25-bae3-1b73a36a2256)
+
+
+
